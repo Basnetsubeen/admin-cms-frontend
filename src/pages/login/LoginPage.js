@@ -4,17 +4,21 @@ import { Button, Form } from "react-bootstrap";
 import CustomInputField from "../../components/customInputField/CustomInputField";
 import { loginAdminUserAction } from "./userAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [form, setForm] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { user } = useSelector((state) => state.admin);
+  const origin =
+    (location.state && location.state.from && location.state.from.pathname) ||
+    "/dashboard";
   useEffect(() => {
-    user?._id && navigate("/dashboard");
-  }, [user, navigate]);
+    user?._id && navigate(origin);
+  }, [user, navigate, origin]);
   const handleOnchange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });

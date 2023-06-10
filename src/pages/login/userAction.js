@@ -14,3 +14,8 @@ export const loginAdminUserAction = (data) => async (dispatch) => {
     dispatch(setAdminUser(user));
   }
 };
+
+//Logout user
+export const logoutUserAction = () => (dispatch) => {
+  dispatch(setAdminUser({}));
+};

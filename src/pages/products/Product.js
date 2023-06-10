@@ -1,8 +1,8 @@
 import React from "react";
 import AdminLayout from "../../components/adminLayout/AdminLayout";
 
-const Dashboard = () => {
-  return <AdminLayout>Dashboard</AdminLayout>;
+const Product = () => {
+  return <AdminLayout>Product</AdminLayout>;
 };
 
-export default Dashboard;
+export default Product;

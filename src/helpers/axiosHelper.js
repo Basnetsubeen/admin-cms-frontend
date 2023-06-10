@@ -1,6 +1,7 @@
 import axios from "axios";
 const rootUrl = process.env.REACT_APP_API_ENDPOINT;
 const adminUserEp = rootUrl + "/admin-user";
+const categoryEp = rootUrl + "/category";
 
 const apiProcessor = async ({ data, method, url }) => {
   try {
@@ -42,6 +43,26 @@ export const loginAdminUser = (data) => {
     data,
     url: adminUserEp + "/login",
     method: "post",
+  };
+  return apiProcessor(option);
+};
+
+//========categories ===========//
+//Insert category
+export const addCategory = (data) => {
+  const option = {
+    data,
+    url: categoryEp,
+    method: "post",
+  };
+  return apiProcessor(option);
+};
+
+// Get all categories
+export const fetchCategory = (_id) => {
+  const option = {
+    url: _id ? categoryEp + "/" + _id : categoryEp,
+    method: "get",
   };
   return apiProcessor(option);
 };

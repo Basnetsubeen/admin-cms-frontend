@@ -6,6 +6,9 @@ import LoginPage from "./pages/login/LoginPage";
 import AdminRegistrationPage from "./pages/admin-registration/AdminRegistrationPage";
 import EmailVerification from "./pages/admin-registration/EmailVerification";
 import Dashboard from "./pages/dashboard/Dashboard";
+import PrivateRouter from "./components/private-router/PrivateRouter";
+import Category from "./pages/categories/Category";
+import Product from "./pages/products/Product";
 
 const App = () => {
   return (
@@ -13,7 +16,30 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           {/* Private routes */}
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRouter>
+                <Dashboard />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/category"
+            element={
+              <PrivateRouter>
+                <Category />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/product"
+            element={
+              <PrivateRouter>
+                <Product />
+              </PrivateRouter>
+            }
+          />
           {/* Public routes */}
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<AdminRegistrationPage />} />
