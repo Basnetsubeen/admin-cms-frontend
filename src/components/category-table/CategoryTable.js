@@ -1,9 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategoryAction } from "../../pages/categories/CategoryAction";
+import {
+  deleteCategoryAction,
+  getCategoryAction,
+} from "../../pages/categories/CategoryAction";
+import EditCategoryForm from "../category-form/EditCategoryForm";
+import { setModalShow } from "../../pages/system-state/SystemSlice";
 
 const CategoryTable = () => {
+  const [selectedCategory, setSelectedCategory] = useState({});
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.category);
   const parentCategory = categories.filter((item) => !item.parentId);
@@ -12,8 +18,21 @@ const CategoryTable = () => {
   useEffect(() => {
     dispatch(getCategoryAction());
   }, [dispatch]);
+
+  const handleOnEdit = (category) => {
+    setSelectedCategory(category);
+    dispatch(setModalShow());
+  };
+
+  const handleOnDelete = (_id) => {
+    if (!window.confirm("Are you sure you want to delete this category")) {
+      return;
+    }
+    dispatch(deleteCategoryAction(_id));
+  };
   return (
     <div>
+      <EditCategoryForm selectedCategory={selectedCategory} />
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -38,7 +57,18 @@ const CategoryTable = () => {
                   <td>{item.name}</td>
                   <td>{item.parentId ? "children" : "parent"}</td>
                   <td>
-                    <Button variant="danger">Delete</Button>
+                    <Button
+                      variant="danger"
+                      onClick={() => handleOnDelete(item._id)}
+                    >
+                      Delete
+                    </Button>{" "}
+                    <Button
+                      variant="warning"
+                      onClick={() => handleOnEdit(item)}
+                    >
+                      Edit
+                    </Button>
                   </td>
                 </tr>
                 {childCategory.map(
@@ -57,7 +87,18 @@ const CategoryTable = () => {
                         <td>{child.name}</td>
                         <td>{child.parentId ? "children" : "parent"}</td>
                         <td>
-                          <Button variant="danger">Delete</Button>
+                          <Button
+                            variant="danger"
+                            onClick={() => handleOnDelete(child._id)}
+                          >
+                            Delete
+                          </Button>{" "}
+                          <Button
+                            variant="warning"
+                            onClick={() => handleOnEdit(child)}
+                          >
+                            Edit
+                          </Button>
                         </td>
                       </tr>
                     )

@@ -57,12 +57,29 @@ export const addCategory = (data) => {
   };
   return apiProcessor(option);
 };
+//Update category
+export const updateCategory = (data) => {
+  const option = {
+    data,
+    url: categoryEp,
+    method: "put",
+  };
+  return apiProcessor(option);
+};
 
 // Get all categories
 export const fetchCategory = (_id) => {
   const option = {
     url: _id ? categoryEp + "/" + _id : categoryEp,
     method: "get",
+  };
+  return apiProcessor(option);
+};
+// Get all categories
+export const deleteCategory = (_id) => {
+  const option = {
+    url: categoryEp + "/" + _id,
+    method: "delete",
   };
   return apiProcessor(option);
 };
