@@ -9,6 +9,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import PrivateRouter from "./components/private-router/PrivateRouter";
 import Category from "./pages/categories/Category";
 import Product from "./pages/products/Product";
+import PaymentMethod from "./pages/paymentMethod/PaymentMethod";
 
 const App = () => {
   return (
@@ -37,6 +38,14 @@ const App = () => {
             element={
               <PrivateRouter>
                 <Product />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/payment-method"
+            element={
+              <PrivateRouter>
+                <PaymentMethod />
               </PrivateRouter>
             }
           />

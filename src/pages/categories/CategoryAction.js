@@ -6,11 +6,14 @@ import {
   updateCategory,
 } from "../../helpers/axiosHelper";
 import { setCategories } from "./CategorySlice";
+import { setModalShow } from "../system-state/SystemSlice";
 
 //Get category
 export const getCategoryAction = () => async (dispatch) => {
   const { status, categories } = await fetchCategory();
-  status === "success" && dispatch(setCategories(categories));
+  status === "success" &&
+    dispatch(setCategories(categories)) &&
+    dispatch(setModalShow());
 };
 
 //Add category
