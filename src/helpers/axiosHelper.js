@@ -3,6 +3,7 @@ const rootUrl = process.env.REACT_APP_API_ENDPOINT;
 const adminUserEp = rootUrl + "/admin-user";
 const categoryEp = rootUrl + "/category";
 const paymentEp = rootUrl + "/payment-method";
+const productEp = rootUrl + "/product";
 
 const apiProcessor = async ({ data, method, url, isPrivate, token }) => {
   try {
@@ -172,6 +173,47 @@ export const deletePaymentMethod = (_id) => {
     url: paymentEp + "/" + _id,
     method: "delete",
     isPrivate: true,
+  };
+  return apiProcessor(option);
+};
+
+//=======Product===============//
+export const addProduct = (data) => {
+  const option = {
+    data,
+    url: productEp,
+    method: "post",
+    isPrivate: true,
+  };
+  return apiProcessor(option);
+};
+// Get payment
+export const getProduct = (_id) => {
+  const option = {
+    url: _id ? productEp + "/" + _id : productEp,
+    method: "get",
+    isPrivate: true,
+  };
+  return apiProcessor(option);
+};
+//Update Product
+export const updateProduct = (data) => {
+  const option = {
+    data,
+    url: productEp,
+    method: "get",
+    isPrivate: true,
+  };
+  return apiProcessor(option);
+};
+
+//Delete Product
+export const deleteProduct = (_id, data) => {
+  const option = {
+    url: productEp + "/" + _id,
+    method: "delete",
+    isPrivate: true,
+    data,
   };
   return apiProcessor(option);
 };

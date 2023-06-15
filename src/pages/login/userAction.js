@@ -14,9 +14,10 @@ export const getAdminUserAction = (token) => async (dispatch) => {
 
 //Login admin user
 export const loginAdminUserAction = (data) => async (dispatch) => {
-  const resultPromise = loginAdminUser(data);
-  toast.promise(resultPromise, { pending: "Please wait..." });
-  const { status, message, user, accessJWT, refreshJWT } = await resultPromise;
+  const responsePending = loginAdminUser(data);
+  toast.promise(responsePending, { pending: "Please wait..." });
+  const { status, message, user, accessJWT, refreshJWT } =
+    await responsePending;
   toast[status](message);
   if (status === "success") {
     sessionStorage.setItem("accessJWT", accessJWT);

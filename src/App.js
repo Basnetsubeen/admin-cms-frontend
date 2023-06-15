@@ -10,6 +10,8 @@ import PrivateRouter from "./components/private-router/PrivateRouter";
 import Category from "./pages/categories/Category";
 import Product from "./pages/products/Product";
 import PaymentMethod from "./pages/paymentMethod/PaymentMethod";
+import NewProduct from "./pages/products/NewProduct";
+import EditProduct from "./pages/products/EditProduct";
 
 const App = () => {
   return (
@@ -38,6 +40,22 @@ const App = () => {
             element={
               <PrivateRouter>
                 <Product />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/product/new"
+            element={
+              <PrivateRouter>
+                <NewProduct />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/product/edit/:_id"
+            element={
+              <PrivateRouter>
+                <EditProduct />
               </PrivateRouter>
             }
           />
