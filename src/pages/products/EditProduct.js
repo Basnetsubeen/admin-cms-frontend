@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProductAction, getsingleProductAction } from "./ProductAction";
+import EditProductForm from "../../components/product-form/EditProductForm";
 
 const EditProduct = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,10 @@ const EditProduct = () => {
           </Button>
         </Link>
       </div>
-      <div className="text-end mt-3">
+      <div className="div">
+        <EditProductForm />
+      </div>
+      <div className="text-end mt-5">
         <Button variant="danger" onClick={handleOnDelete}>
           Delete Product
         </Button>

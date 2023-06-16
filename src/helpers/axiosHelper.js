@@ -201,7 +201,7 @@ export const updateProduct = (data) => {
   const option = {
     data,
     url: productEp,
-    method: "get",
+    method: "put",
     isPrivate: true,
   };
   return apiProcessor(option);
