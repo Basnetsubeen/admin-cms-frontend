@@ -18,9 +18,7 @@ const AdminProfile = () => {
   useEffect(() => {
     user?._id && setForm(user);
   }, [user]);
-  console.log(user);
 
-  console.log(user);
   const handleOnProfileUpdate = (e) => {
     const { name, value } = e.target;
     setForm({

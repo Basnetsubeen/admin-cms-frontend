@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import CustomInputField from "../../components/customInputField/CustomInputField";
 import { autoLoginAction, loginAdminUserAction } from "./userAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [form, setForm] = useState({});
@@ -13,12 +13,13 @@ const LoginPage = () => {
   const location = useLocation();
 
   const { user } = useSelector((state) => state.admin);
+  const isUserState = Boolean(user?._id);
   const origin =
     (location.state && location.state.from && location.state.from.pathname) ||
     "/dashboard";
   useEffect(() => {
-    user?._id ? navigate(origin) : dispatch(autoLoginAction());
-  }, [user, navigate, origin, dispatch]);
+    isUserState ? navigate(origin) : dispatch(autoLoginAction());
+  }, [isUserState, navigate, origin, dispatch]);
 
   const handleOnchange = (e) => {
     const { name, value } = e.target;
@@ -56,7 +57,9 @@ const LoginPage = () => {
             </Button>
           </Form>
           <div className="text-end">
-            Do not have account? <Link to="/register">Register</Link>
+            {/* Forgot Password?{" "}
+            <Link to="/rest-password">Rest your password!</Link> */}
+            Forgot <a href="/reset-password">Password</a> ?
           </div>
         </div>
       </MainLayout>

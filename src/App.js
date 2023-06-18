@@ -13,6 +13,7 @@ import PaymentMethod from "./pages/paymentMethod/PaymentMethod";
 import NewProduct from "./pages/products/NewProduct";
 import EditProduct from "./pages/products/EditProduct";
 import AdminProfile from "./pages/admin-profile/AdminProfile";
+import ResetPassword from "./pages/login/ResetPassword";
 
 const App = () => {
   return (
@@ -81,6 +82,7 @@ const App = () => {
           <Route path="/register" element={<AdminRegistrationPage />} />
           <Route path="/admin/verify-email" element={<EmailVerification />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
