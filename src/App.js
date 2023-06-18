@@ -12,6 +12,7 @@ import Product from "./pages/products/Product";
 import PaymentMethod from "./pages/paymentMethod/PaymentMethod";
 import NewProduct from "./pages/products/NewProduct";
 import EditProduct from "./pages/products/EditProduct";
+import AdminProfile from "./pages/admin-profile/AdminProfile";
 
 const App = () => {
   return (
@@ -64,6 +65,14 @@ const App = () => {
             element={
               <PrivateRouter>
                 <PaymentMethod />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/admin-profile"
+            element={
+              <PrivateRouter>
+                <AdminProfile />
               </PrivateRouter>
             }
           />

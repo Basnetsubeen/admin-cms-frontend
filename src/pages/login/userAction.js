@@ -3,6 +3,8 @@ import {
   getAdminUser,
   getnewAccessJWT,
   loginAdminUser,
+  updateAdminUser,
+  updateAdminUserPassword,
 } from "../../helpers/axiosHelper";
 import { setAdminUser } from "./userSlice";
 
@@ -48,4 +50,22 @@ export const autoLoginAction = () => async (dispatch) => {
   } else {
     dispatch(logoutUserAction());
   }
+};
+
+//Admin profile update
+
+export const updateAdminUserAction = (data) => async (dispatch) => {
+  const promisePending = updateAdminUser(data);
+  toast.promise(promisePending, { pending: "Please wait..." });
+  const { status, message } = await promisePending;
+  toast[status](message);
+  status === "success" && dispatch(getAdminUserAction());
+};
+
+//Update admin user password
+export const updateAdminUserPasswordAction = async (data) => {
+  const promisePending = updateAdminUserPassword(data);
+  toast.promise(promisePending, { pending: "Please wait..." });
+  const { status, message } = await promisePending;
+  toast[status](message);
 };

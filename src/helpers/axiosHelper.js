@@ -80,6 +80,28 @@ export const getAdminUser = (token) => {
   };
   return apiProcessor(option);
 };
+
+//update user profile
+export const updateAdminUser = (data) => {
+  const option = {
+    method: "put",
+    url: adminUserEp,
+    isPrivate: true,
+    data,
+  };
+  return apiProcessor(option);
+};
+
+//update admin user password
+export const updateAdminUserPassword = (data) => {
+  const option = {
+    method: "patch",
+    url: adminUserEp,
+    isPrivate: true,
+    data,
+  };
+  return apiProcessor(option);
+};
 //Generate new accessJWT to open in the tab in new browser
 export const getnewAccessJWT = async () => {
   const token = localStorage.getItem("refreshJWT");

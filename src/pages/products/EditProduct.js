@@ -22,6 +22,7 @@ const EditProduct = () => {
     //We use new Set to prevent the duplication of the images
     deleteProductAction(_id, [...new Set(imgs)]);
   };
+
   return (
     <AdminLayout>
       <div className="mt-3 mb-3">

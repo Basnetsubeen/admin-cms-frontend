@@ -37,9 +37,14 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               {user?._id ? (
-                <Link to="/" className="nav-link" onClick={handleOnLogout}>
-                  Logout
-                </Link>
+                <>
+                  <Link to="/admin-profile" className="nav-link">
+                    <i className="fa-solid fa-user"></i> Profile
+                  </Link>
+                  <Link to="/" className="nav-link" onClick={handleOnLogout}>
+                    Logout
+                  </Link>
+                </>
               ) : (
                 <>
                   <Link to="/login" className="nav-link">
