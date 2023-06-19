@@ -14,6 +14,8 @@ import NewProduct from "./pages/products/NewProduct";
 import EditProduct from "./pages/products/EditProduct";
 import AdminProfile from "./pages/admin-profile/AdminProfile";
 import ResetPassword from "./pages/login/ResetPassword";
+import Order from "./pages/orders/Order";
+import OrderDetails from "./pages/orders/OrderDetails";
 
 const App = () => {
   return (
@@ -74,6 +76,22 @@ const App = () => {
             element={
               <PrivateRouter>
                 <AdminProfile />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <PrivateRouter>
+                <Order />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/order/:_id"
+            element={
+              <PrivateRouter>
+                <OrderDetails />
               </PrivateRouter>
             }
           />

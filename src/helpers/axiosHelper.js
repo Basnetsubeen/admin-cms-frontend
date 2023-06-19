@@ -4,6 +4,7 @@ const adminUserEp = rootUrl + "/admin-user";
 const categoryEp = rootUrl + "/category";
 const paymentEp = rootUrl + "/payment-method";
 const productEp = rootUrl + "/product";
+const orderEp = rootUrl + "/order";
 
 const apiProcessor = async ({ data, method, url, isPrivate, token }) => {
   try {
@@ -254,6 +255,17 @@ export const deleteProduct = (_id, data) => {
     method: "delete",
     isPrivate: true,
     data,
+  };
+  return apiProcessor(option);
+};
+
+//=========== Orders ===========//
+// Get payment
+export const getOrder = (_id) => {
+  const option = {
+    url: _id ? orderEp + "/" + _id : orderEp,
+    method: "get",
+    isPrivate: true,
   };
   return apiProcessor(option);
 };
