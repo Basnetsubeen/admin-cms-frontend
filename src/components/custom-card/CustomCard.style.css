@@ -1,0 +1,24 @@
+.dashboard-product .card {
+  background: linear-gradient(to right, rgb(161, 161, 196), rgb(196, 231, 196));
+  border: none;
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 6 rem;
+  border: 6px double rgb(30, 82, 178);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

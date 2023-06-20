@@ -9,10 +9,11 @@ const OrderEditForm = () => {
   const { _id } = useParams();
   const dispatch = useDispatch();
   const { orders, selectedOrders } = useSelector((state) => state.order);
+
   useEffect(() => {
     //First check if we have orders in our state or not, if yes, select the order from the state;
     if (orders.length) {
-      const select = orders.filter((item) => item._id === _id);
+      const select = orders.filter((item) => item._id === _id)[0];
       dispatch(setSelectedOrders(select));
     } else {
       //If not, fetch the data from server
@@ -20,7 +21,7 @@ const OrderEditForm = () => {
     }
   }, [_id, dispatch, orders]);
   const { cart } = selectedOrders;
-  console.log(selectedOrders);
+
   return (
     <div>
       {/* Status */}
@@ -46,14 +47,13 @@ const OrderEditForm = () => {
         <hr />
         <p>
           Order Date: 20-2-2-2222 <br />
-          Name:{selectedOrders?.buyers.fName}
-          {""} {selectedOrders?.buyers.lName}
+          Name:{selectedOrders?.buyers?.fName}
+          {""} {selectedOrders?.buyers?.lName}
           <br />
-          Phone: {selectedOrders?.buyers.phone} <br />
-          Email: {selectedOrders?.buyers.email} <br />
+          Phone: {selectedOrders?.buyers?.phone} <br />
+          Email: {selectedOrders?.buyers?.email} <br />
           Shipping Address: {selectedOrders?.shipping?.street} {""}
-          {selectedOrders?.shipping?.suburb}
-          {""}
+          {selectedOrders?.shipping?.suburb} {""}
           {selectedOrders?.shipping?.postCode} {""}
           {selectedOrders?.shipping?.country} {""}
           <br />
@@ -61,7 +61,7 @@ const OrderEditForm = () => {
       </div>
 
       {/* Payment Information */}
-      <div className="payment-info card p-3">
+      <div className="payment-info card p-3 mt-3">
         <h4>Payment Information</h4>
         <hr />
         Status: {selectedOrders?.paymentInfo?.status} <br />
@@ -85,7 +85,7 @@ const OrderEditForm = () => {
             <th>Sub Total</th>
           </thead>
           <tbody>
-            {cart.map((item, i) => (
+            {cart?.map((item, i) => (
               <tr key={i}>
                 <td>{i + 1}</td>
                 <td>
@@ -118,6 +118,7 @@ const OrderEditForm = () => {
         </Form.Group>
         <Button variant="primary">Add Note</Button>
       </Form>
+
       {/* Message History */}
       <div className="mt-5">
         <div className="note-history mt-3">

@@ -49,7 +49,7 @@ const SideMenu = () => {
               </Link>
             </ListGroup.Item>
             <ListGroup.Item>
-              <Link onClick={handleClose} to="" className="nav-link">
+              <Link onClick={handleClose} to="/users" className="nav-link">
                 <i className="fa-solid fa-users"></i> Users
               </Link>
             </ListGroup.Item>
@@ -59,7 +59,7 @@ const SideMenu = () => {
               </Link>
             </ListGroup.Item>
             <ListGroup.Item>
-              <Link onClick={handleClose} to="" className="nav-link">
+              <Link onClick={handleClose} to="/reviews" className="nav-link">
                 <i className="fa-solid fa-star"></i> Reviews
               </Link>
             </ListGroup.Item>
