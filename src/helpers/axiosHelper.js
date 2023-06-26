@@ -45,13 +45,14 @@ const apiProcessor = async ({ data, method, url, isPrivate, token }) => {
     };
   }
 };
-
+//=========Admin Users =============//
 //Insert new admin user
 export const insertUser = (data) => {
   const option = {
     data,
     url: adminUserEp,
     method: "post",
+    isPrivate: true,
   };
   return apiProcessor(option);
 };
@@ -80,6 +81,24 @@ export const getAdminUser = (token) => {
     method: "get",
     isPrivate: true,
     token,
+  };
+  return apiProcessor(option);
+};
+//Get admin user
+export const deleteAdminUser = (_id) => {
+  const option = {
+    url: adminUserEp + "/" + _id,
+    method: "delete",
+    isPrivate: true,
+  };
+  return apiProcessor(option);
+};
+//Get All admin user
+export const getAllAdminUser = () => {
+  const option = {
+    url: adminUserEp + "/all-admins",
+    method: "get",
+    isPrivate: true,
   };
   return apiProcessor(option);
 };

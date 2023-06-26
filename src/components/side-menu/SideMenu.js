@@ -68,6 +68,15 @@ const SideMenu = () => {
                 <i className="fa-solid fa-gear"></i> Setting
               </Link>
             </ListGroup.Item>
+            <ListGroup.Item>
+              <Link
+                onClick={handleClose}
+                to="/admin-users"
+                className="nav-link"
+              >
+                <i class="fa-solid fa-user-secret"></i> Admin Users
+              </Link>
+            </ListGroup.Item>
           </ListGroup>
         </Offcanvas.Body>
       </Offcanvas>

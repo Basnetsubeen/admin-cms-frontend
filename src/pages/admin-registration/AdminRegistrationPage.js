@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import CustomInputField from "../../components/customInputField/CustomInputField";
 import { Alert, Button, Form } from "react-bootstrap";
-import MainLayout from "../../components/layout/MainLayout";
+
 import { insertUser } from "../../helpers/axiosHelper";
 import { Link } from "react-router-dom";
-
+import AdminLayout from "../../components/adminLayout/AdminLayout";
 const AdminRegistrationPage = () => {
   const [form, setForm] = useState({});
   const [response, setResponse] = useState({});
@@ -77,7 +77,12 @@ const AdminRegistrationPage = () => {
     },
   ];
   return (
-    <MainLayout>
+    <AdminLayout>
+      <div className="mt-3">
+        <Link to="/admin-users" className="text-decoration-none text-secondary">
+          &lt; Back
+        </Link>
+      </div>
       <div className="form">
         <Form onSubmit={handleOnSubmit}>
           <h1>New Admin Registration</h1>
@@ -101,7 +106,7 @@ const AdminRegistrationPage = () => {
           Already have account? <Link to="/login">Login</Link>
         </div>
       </div>
-    </MainLayout>
+    </AdminLayout>
   );
 };
 

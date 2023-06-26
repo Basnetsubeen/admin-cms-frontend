@@ -11,8 +11,8 @@ const Dashboard = () => {
   const { productList } = useSelector((state) => state.product);
   const dispatch = useDispatch();
   useEffect(() => {
-    !productList.length && dispatch(getProductAction());
-  }, [dispatch, productList]);
+    dispatch(getProductAction());
+  }, [dispatch]);
   const clientTableHead = ["First Name", "Last Name", "Joined Date"];
   const clientInfo = [
     {

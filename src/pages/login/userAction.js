@@ -1,12 +1,14 @@
 import { toast } from "react-toastify";
 import {
+  deleteAdminUser,
   getAdminUser,
+  getAllAdminUser,
   getnewAccessJWT,
   loginAdminUser,
   updateAdminUser,
   updateAdminUserPassword,
 } from "../../helpers/axiosHelper";
-import { setAdminUser } from "./userSlice";
+import { setAdminUser, setAllAdminUsers } from "./userSlice";
 
 //Get admin user
 export const getAdminUserAction = (token) => async (dispatch) => {
@@ -68,4 +70,18 @@ export const updateAdminUserPasswordAction = async (data) => {
   toast.promise(promisePending, { pending: "Please wait..." });
   const { status, message } = await promisePending;
   toast[status](message);
+};
+//Get All admin users
+export const getAllUserAction = () => async (dispatch) => {
+  const { status, users } = await getAllAdminUser();
+  status === "success" && dispatch(setAllAdminUsers(users));
+};
+
+//Delete admin users
+export const deleteAdminUserAction = (_id) => async (dispatch) => {
+  const promisePending = deleteAdminUser(_id);
+  toast.promise(promisePending, { pending: "Please wait ......" });
+  const { status, message } = await promisePending;
+  toast[status](message);
+  status === "success" && dispatch(getAdminUserAction());
 };

@@ -21,7 +21,7 @@ const EmailVerification = () => {
       setResponse(result);
       setIsPending(false);
     })();
-  }, []);
+  }, [queryParams]);
   return (
     <div>
       <MainLayout>

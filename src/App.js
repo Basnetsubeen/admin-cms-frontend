@@ -18,6 +18,7 @@ import Order from "./pages/orders/Order";
 import OrderDetails from "./pages/orders/OrderDetails";
 import Reviews from "./pages/reviews/Reviews";
 import Users from "./pages/users/Users";
+import AdminUsers from "./pages/users/AdminUsers";
 
 const App = () => {
   return (
@@ -110,6 +111,14 @@ const App = () => {
             element={
               <PrivateRouter>
                 <Users />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/admin-users"
+            element={
+              <PrivateRouter>
+                <AdminUsers />
               </PrivateRouter>
             }
           />
